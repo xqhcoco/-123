@@ -1,23 +1,22 @@
-//Ò»¸öÊý×éAÖÐ´æÓÐN£¨ > 0£©¸öÕûÊý£¬ÔÚ²»ÔÊÐíÊ¹ÓÃÁíÍâÊý×éµÄÇ°ÌáÏÂ£¬½«Ã¿¸öÕûÊýÑ­»·ÏòÓÒÒÆM£¨¡Ý0£©¸öÎ»ÖÃ
-//Ã¿¸öÊäÈë°üº¬Ò»¸ö²âÊÔÓÃÀý£¬µÚ1ÐÐÊäÈëN£¨1¡ÜN¡Ü100£©ºÍM£¨¡Ý0£©£»µÚ2ÐÐÊäÈëN¸öÕûÊý£¬Ö®¼äÓÃ¿Õ¸ñ·Ö¸ô¡£
+//ä¸€ä¸ªæ•°ç»„Aä¸­å­˜æœ‰Nï¼ˆ > 0ï¼‰ä¸ªæ•´æ•°ï¼Œåœ¨ä¸å…è®¸ä½¿ç”¨å¦å¤–æ•°ç»„çš„å‰æä¸‹ï¼Œå°†æ¯ä¸ªæ•´æ•°å¾ªçŽ¯å‘å³ç§»Mï¼ˆâ‰¥0ï¼‰ä¸ªä½ç½®
+//æ¯ä¸ªè¾“å…¥åŒ…å«ä¸€ä¸ªæµ‹è¯•ç”¨ä¾‹ï¼Œç¬¬1è¡Œè¾“å…¥Nï¼ˆ1â‰¤Nâ‰¤100ï¼‰å’ŒMï¼ˆâ‰¥0ï¼‰ï¼›ç¬¬2è¡Œè¾“å…¥Nä¸ªæ•´æ•°ï¼Œä¹‹é—´ç”¨ç©ºæ ¼åˆ†éš”ã€‚
 
-//Êä³ö¸ñÊ½ :
-//ÔÚÒ»ÐÐÖÐÊä³öÑ­»·ÓÒÒÆMÎ»ÒÔºóµÄÕûÊýÐòÁÐ£¬Ö®¼äÓÃ¿Õ¸ñ·Ö¸ô£¬ÐòÁÐ½áÎ²²»ÄÜÓÐ¶àÓà¿Õ¸ñ
+//è¾“å‡ºæ ¼å¼ :
+//åœ¨ä¸€è¡Œä¸­è¾“å‡ºå¾ªçŽ¯å³ç§»Mä½ä»¥åŽçš„æ•´æ•°åºåˆ—ï¼Œä¹‹é—´ç”¨ç©ºæ ¼åˆ†éš”ï¼Œåºåˆ—ç»“å°¾ä¸èƒ½æœ‰å¤šä½™ç©ºæ ¼
 
-/*Ë¼Â·£º
-1.¶¨Òån,m,¶¨ÒåÊý×éarr
-2.forÑ­»·¶¨Òåi,ÒÀ´ÎÊäÈëÃ¿¸öÊý×Ö
-3.¶¨ÒåÄæÐòº¯Êý
-4.½«Êý×é·Ö³ÉÁ½¸ö²¿·Ö·Ö±ðÊäÈëº¯ÊýÄæÐò
-5.×îºó½«Êý×éÄæÐòÊä³ö
+/*æ€è·¯ï¼š
+1.å®šä¹‰n,m,å®šä¹‰æ•°ç»„arr
+2.forå¾ªçŽ¯å®šä¹‰i,ä¾æ¬¡è¾“å…¥æ¯ä¸ªæ•°å­—
+3.å®šä¹‰é€†åºå‡½æ•°
+4.å°†æ•°ç»„åˆ†æˆä¸¤ä¸ªéƒ¨åˆ†åˆ†åˆ«è¾“å…¥å‡½æ•°é€†åº
+5.æœ€åŽå°†æ•°ç»„é€†åºè¾“å‡º
 */
-#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
-void Nixu(int start, int end, char arr[])
+void Nixu(int start,int end,int arr[])
 {
-
+	
 	while (start < end) {
-		char temp;
+		int temp;
 		temp = arr[start];
 		arr[start] = arr[end];
 		arr[end] = temp;
@@ -29,27 +28,33 @@ int main()
 {
 	int n,m;
 	int part1=0;
-	int part2;
-	char arr[100];
+	int arr[100];
 	scanf("%d %d", &n, &m);
-	part2 = n-m;
-	getchar();//Çå³ýÊäÈë»º³åÇøÖÐµÄ'\n'
 	for (int i = 0; i < n; i++) {
-		scanf(" %c", &arr[i]);//%cÇ°µÄ¿Õ¸ñÓÃÀ´Ìø¹ýÊäÈëÊ±µÄ¿Õ¸ñ
+		scanf("%d", &arr[i]);
 	}
-	m = m % n;//´¦Àím>nÊ±µÄÇé¿ö
-	Nixu(part1,n-m-1,arr);
-	Nixu(part2, n - 1,arr);
-	Nixu(part1, n - 1,arr);
-	for (int i = 0; i < n; i++) {
-		printf("%c", arr[i]);
+	m = m % n;//å¤„ç†m>næ—¶çš„æƒ…å†µ
+    if(m==0){
+        for (int i = 0; i < n; i++) {
+		printf("%d", arr[i]);
 		if (i != n - 1) {
 			printf(" ");
 		}
 	}
-	printf("\n");
+        printf("\n");
+}else{
+	Nixu(part1,n-1,arr);
+	Nixu(part1,m-1,arr);
+	Nixu(m, n - 1,arr);
+	for (int i = 0; i < n; i++) {
+		printf("%d", arr[i]);
+		if (i != n - 1) {
+			printf(" ");
+		}
+	}
+    printf("\n");
+}
 
 
 	return 0;
 }
-		
